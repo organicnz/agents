@@ -389,27 +389,63 @@ Agents are automatically invoked by Claude Code when:
 - You explicitly mention the technology the agent specializes in
 - The task requires specialized knowledge in that domain
 
-## Contributing
+## Agent Development Guidelines
 
-To add or modify an agent:
+### File Naming Conventions
 
-1. Create a markdown file with the agent name (e.g., `my-agent.md`)
-2. Include the frontmatter with name, description, and model
-3. Define the agent's expertise, approach, and standards
-4. Provide clear examples and usage patterns
-5. Document best practices and common patterns
+**Platform Naming:**
+- Use lowercase consistently (e.g., `elevenlabs-speech-specialist-ios.md`)
+- Add platform as suffix when needed (e.g., `-ios`, `-android`)
+
+**Role Naming:**
+- `-developer`: Implementation-focused (e.g., `ios-developer`)
+- `-engineer`: System/infrastructure (e.g., `documentation-engineer`)
+- `-specialist`: Domain-specific (e.g., `upstash-specialist`)
+- `-analyst`: Research/analysis (e.g., `research-analyst`)
+- `-expert`: Advanced technical (e.g., `flutter-expert`)
 
 ### Agent File Structure
 
-```markdown
+```yaml
 ---
 name: agent-name
-description: Brief description of when to use this agent
-model: sonnet|opus|haiku
+description: Use this agent when [description]. Examples: <example>...</example> [3 examples total]
+model: sonnet
 ---
 
-[Agent system prompt and instructions]
+[1-2 paragraph role statement]
+
+## Core Expertise Areas
+[Capabilities list]
+
+## Quality Standards
+[Standards and expectations]
 ```
+
+### Quality Checklist
+
+- [ ] Lowercase filename with platform suffix
+- [ ] 3 examples in description
+- [ ] Clear role statement (1-2 paragraphs)
+- [ ] Core Expertise section
+- [ ] Quality Standards section
+- [ ] No >60% duplication with existing agents
+- [ ] Platform parity considered
+
+### Platform Parity
+
+Current coverage:
+- **iOS:** ios-developer, ios-expert-debugger, refactoring-specialist-ios
+- **Flutter:** flutter-expert, flutter-expert-debugger, refactoring-specialist-flutter
+- **Voice APIs:** ElevenLabs, Hume EVI, OpenAI Realtime (both `-ios` and base versions)
+
+### Contributing
+
+1. Check existing agents for duplication
+2. Follow naming conventions (lowercase, platform suffix)
+3. Include exactly 3 examples in description
+4. Ensure platform parity when creating platform-specific agents
+5. Use `sonnet` model unless specific requirements exist
 
 ## License
 
